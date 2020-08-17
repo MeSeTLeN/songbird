@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import "./App.scss";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header>
+          <div className="logo_score_continer">
+            <div className="logo">SongBird</div>
+            <div className="score">score</div>
+          </div>
+          <div className="stages">
+            <div className="active_stage">stage #1</div>
+            <div>stage #2</div>
+            <div>stage #3</div>
+            <div>stage #4</div>
+            <div>stage #5</div>
+            <div>stage #6</div>
+          </div>
+        </header>
+        <section>
+          <div>Unknown bird</div>
+          <div>variants</div>
+          <div>variant decrp</div>
+          <div>next stage</div>
+        </section>
+      </div>
+    );
+  }
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<App />, document.getElementById("root"));

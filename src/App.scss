@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+body > #root > div {
+  height: 100vh;
+}
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  :focus {
+      outline: none;
+  }
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+flex-wrap: wrap;
+background: #282c34;
+color: #fff;
+}
+
+header{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.logo_score_continer{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.logo{
+  display: flex;
+  align-items: center;
+  font-size: 32pt;
+  padding: 20px 0;
+}
+.score{
+  font-size: 20pt;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+
+}
+.stages{
+  display: flex;
+  flex-wrap: wrap;
+  background: #ffffff62;
+  border-radius: 20px;
+}
+.stages div{
+  padding: 10px 20px;
+}
+.stages div.active_stage{
+  background: #ffffff8a;
+  border-radius: 20px;
+}
+section{
+  width: 100%;
+}
