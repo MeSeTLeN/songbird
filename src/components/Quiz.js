@@ -16,6 +16,14 @@ export default class Quiz extends Component {
       enableNextStageBtn: false,
     };
   }
+
+  //   return random name by currentStage index
+  RandomQuestion = (questionData, questionIndex) => {
+    if (this.state.currentStage === questionIndex) {
+      return questionData[Math.floor(Math.random() * questionData.length)].name;
+    }
+  };
+
   // loadData = () => {
   //   const { currentStage } = this.state;
   //   this.setState(() => {
@@ -24,6 +32,14 @@ export default class Quiz extends Component {
   //     };
   //   });
   // };
+
+  // answerChecker= () =>{
+  //     if(optionObj.name=)
+
+  // }
+
+  // ! question randomizer
+  // radom question and map it depend on currentStage
 
   // ! if option=answer
   // OnClickBtnFunc() => if (optionObj.name===questionObj.name) {this.setState({ enableNextStageBtn: true, score + (maxStageScore - responses), responses:0, play sound right})} else { play sound wrong}
@@ -42,6 +58,8 @@ export default class Quiz extends Component {
   // ! PlayAgain render new question by resend on first stage
   // OnClickPlayAgain () => {this.setState({currentStage:0 }) }
 
+  // randomObjFromArray=()=>{[Math.floor(Math.random() * birdsData.length)]}
+
   render() {
     return (
       <div>
@@ -49,16 +67,27 @@ export default class Quiz extends Component {
         {birdsData.map((stageObj, index) => (
           <div>stage {`${index + 1} / ${birdsData.length}`}</div>
         ))}
+
         {/* if currentStage <= birdsData.length render this */}
-        {birdsData.map((optionsBoxObj, index) => (
+        {/* question */}
+        <div>
+          question:
+          {birdsData.map((questionData, questionIndex) => (
+            <div>{this.RandomQuestion(questionData, questionIndex)}</div>
+          ))}
+        </div>
+
+        {/* options */}
+        {/* {birdsData.map((optionsBoxObj, index) => (
           <div>
             {optionsBoxObj.map((optionObj, index) => {
               if (this.state.currentStage === index) {
-                return <button>{optionObj.name} </button>;
+                return <button onClick={enableNextStageBtn==false? answerChecker(optionObj.name):null}>{optionObj.name} </button>;
               }
             })}
           </div>
-        ))}
+        ))} */}
+
         {/* always render next stage(finish) btn */}
         {/* if currentStage > birdsData.length render congratz text */}
       </div>
