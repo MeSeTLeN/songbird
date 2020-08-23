@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./App.scss";
+import Quiz from "./components/Quiz";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
+      <Quiz />
+        {/* <header>
           <div className="logo_score_continer">
             <div className="logo">SongBird</div>
             <div className="score">score</div>
@@ -25,7 +27,7 @@ class App extends Component {
           <div>variants</div>
           <div>variant decrp</div>
           <div>next stage</div>
-        </section>
+        </section> */}
       </div>
     );
   }
