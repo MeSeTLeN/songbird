@@ -2,27 +2,53 @@ import React, { Component } from "react";
 import birdsData from "../data/birdsData";
 
 export default class Quiz extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    currentStage: 0,
+    // randomQuestionIndex
+    userAnswer: null,
+    score: 0,
+    maxStageScore: 5,
+    responses: 0,
+    selectedOptionBtn: false,
+    enableNextStageBtn: false,
+    list: [1, 2, 3],
+  };
 
-    this.state = {
-      currentStage: 0,
-      // randomQuestionIndex
-      //   userAnswer: null,
-      score: 0,
-      maxStageScore: 5,
-      responses: 0,
-      selectedOptionBtn: false,
-      enableNextStageBtn: false,
-    };
-  }
+  onUpdateItems = () => {
+    this.setState((state) => {
+      const list = state.list.map((item) => item + 1);
+
+      return {
+        list,
+      };
+    });
+  };
 
   //   return random name by currentStage index
+  //   RandomQuestion = (questionData, questionIndex) => {
+  //     if (this.state.currentStage === questionIndex) {
+  //       return questionData[Math.floor(Math.random() * questionData.length)].name;
+  //     }
+  //   };
+
+  
   RandomQuestion = (questionData, questionIndex) => {
     if (this.state.currentStage === questionIndex) {
       return questionData[Math.floor(Math.random() * questionData.length)].name;
     }
   };
+
+  QuestionMap = () => {
+    return birdsData.map((questionData, questionIndex) => (
+      <div>{this.RandomQuestion(questionData, questionIndex)}</div>
+    ));
+  };
+
+  // componentDidMount() {
+  //   this.setState({
+      
+  //   })
+  // }
 
   // loadData = () => {
   //   const { currentStage } = this.state;
@@ -33,13 +59,10 @@ export default class Quiz extends Component {
   //   });
   // };
 
-  // answerChecker= () =>{
-  //     if(optionObj.name=)
+  //   answerChecker= () =>{
+  //       if(optionObj.name=)
 
-  // }
-
-  // ! question randomizer
-  // radom question and map it depend on currentStage
+  //   }
 
   // ! if option=answer
   // OnClickBtnFunc() => if (optionObj.name===questionObj.name) {this.setState({ enableNextStageBtn: true, score + (maxStageScore - responses), responses:0, play sound right})} else { play sound wrong}
@@ -63,8 +86,12 @@ export default class Quiz extends Component {
   render() {
     return (
       <div>
+        <div>{this.state.list}</div>
+        <button type="button" onClick={this.onUpdateItems}>
+          Make everyone one year older
+        </button>
         {/* if currentStage = optionsBoxObj index use selected class */}
-        {birdsData.map((stageObj, index) => (
+        {birdsData.map((data, index) => (
           <div>stage {`${index + 1} / ${birdsData.length}`}</div>
         ))}
 
@@ -72,8 +99,17 @@ export default class Quiz extends Component {
         {/* question */}
         <div>
           question:
-          {birdsData.map((questionData, questionIndex) => (
+          {/* {birdsData.map((questionData, questionIndex) => (
             <div>{this.RandomQuestion(questionData, questionIndex)}</div>
+          ))} */}
+          {this.QuestionMap()}
+          {birdsData.map((questionData, questionIndex) => (
+            <div>
+              {this.state.currentStage === questionIndex
+                ? questionData[Math.floor(Math.random() * questionData.length)]
+                    .name
+                : null}
+            </div>
           ))}
         </div>
 
